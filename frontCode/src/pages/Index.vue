@@ -2,17 +2,18 @@
 	<h1 :class="$style.container">
 		<nav :class="$style.title"></nav>
 		<!-- 登录框 -->
-		<ul :class="$style.login_box">
-			<div :class="$style.nick" contenteditable></div>
-			<div :class="$style.password" contenteditable></div>
-			<button :class="$style.login">登陆</button>
-			<button @click="registered" :class="$style.registered">注册</button>
-		</ul>
+		<div :class="$style.login_box">
+			<p :class="$style.nick" contenteditable></p>
+			<p :class="$style.password" contenteditable></p>
+			<button @click="login">登陆</button>
+			<router-link to="/jiefang/registered">注册</router-link>
+		</div>
 	</h1>
 </template>
 
 <script>
     // import axios from 'axios'
+	import {getLink} from '../lib/link'
 
     export default {
         
@@ -23,9 +24,9 @@
             }
         },
         methods: {
-            registered() {
-                
-            }
+           login() {
+			   
+		   }
         },
         mounted () {
             
@@ -85,7 +86,7 @@
 		padding: 30px 30px;
 		text-align: center;
 	}
-	.login_box div {
+	.login_box p {
 		outline: none;
 		font-size: 16px;
 		border-radius: 6px;
@@ -95,14 +96,14 @@
 		line-height: 1.8;
 		padding: 0 14px;
 	}
-	.login_box div::before {
+	.login_box p::before {
 		content: "用户名";
-		font-size: 22px;
+		font-size: 20px;
 		color: rgb(250, 195, 195);
 		line-height: 1.4;
 		float: left;
 	}
-	.login_box div::after {
+	.login_box p::after {
 		content: "不能超过8个字符"; 
 		font-size: 14px;
 		color: rgb(194, 60, 116);
@@ -112,17 +113,19 @@
 	.login_box .password::before {
 		content: "密码";
 	}
-	.login_box button {
+	.login_box button, .login_box a {
 		width: 100px;
-		height: 30px;
+		line-height: 2;
 		border: none;
 		color: #fff;
 		font-size: 18px;
+		font-weight: 600;
 		border-radius: 20px;
 		background: linear-gradient(rgb(31, 134, 218), rgb(216, 239, 245));
 		cursor: pointer;
 	}
-	.login_box .registered {
+	.login_box a {
+		display: inline-block;
 		margin-left: 20px;
 		background: linear-gradient(rgb(7, 218, 77), rgb(200, 240, 225));
 	}
